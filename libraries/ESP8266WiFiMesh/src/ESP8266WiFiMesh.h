@@ -40,7 +40,6 @@ private:
 	void connectToNode(String target_ssid, String message);
 	bool exchangeInfo(String message, WiFiClient curr_client);
 	bool waitForClient(WiFiClient curr_client, int max_wait);
-
 public:
 
 	/**
@@ -51,6 +50,7 @@ public:
 	 *          is the string received from another node and returns the string to send back.
 	 * 
 	 */
+	ESP8266WiFiMesh(uint32_t chip_id, std::function<String(String)> handler, String ssidPrefix);
 	ESP8266WiFiMesh(uint32_t chip_id, std::function<String(String)> handler);
 
 	/**

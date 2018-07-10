@@ -29,6 +29,15 @@
 #define SERVER_IP_ADDR			"192.168.4.1"
 #define SERVER_PORT				4011
 
+ESP8266WiFiMesh::ESP8266WiFiMesh(uint32_t chip_id, std::function<String(String)> handler, String networkSSID = "")
+: _server(SERVER_PORT)
+{
+	_chip_id = chip_id;
+	_ssid = String( String( networkSSID ) + String( _chip_id ) );
+	_ssid_prefix = String( networkSSID );
+	_handler = handler;
+}
+
 ESP8266WiFiMesh::ESP8266WiFiMesh(uint32_t chip_id, std::function<String(String)> handler)
 : _server(SERVER_PORT)
 {
